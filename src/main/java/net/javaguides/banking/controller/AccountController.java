@@ -6,7 +6,7 @@ import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -22,9 +22,8 @@ public class AccountController {
 
     // Add Account REST API
     @PostMapping
-    public ResponseEntity<AccountDto> addAccount(@RequestBody AccountDto accountDto) {
+    public ResponseEntity<AccountDto> addAccount(@Valid @RequestBody AccountDto accountDto) {
         return new ResponseEntity<>(accountService.createAccount(accountDto), HttpStatus.CREATED);
-
     }
 
     //Get Account REST API
